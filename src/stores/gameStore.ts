@@ -1,11 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-
-export interface CardType {
-  image: string
-  matched: boolean
-  message: string
-}
+import type { CardType, Deck } from '@/models'
 
 export const useGameStore = defineStore('game', () => {
   const cards = ref<CardType[]>([])
@@ -13,22 +8,32 @@ export const useGameStore = defineStore('game', () => {
   const discoveredMessages = ref<string[]>([])
   const remainingMessages = ref<string[]>([])
 
+  function shuffleArray<T>(array: T[]): T[] {
+    return array.sort(() => Math.random() - 0.5)
+  }
+
   function setCards(newCards: CardType[]) {
-    cards.value = newCards
+    cards.value = newCards.map((card) => ({ ...card, flipped: false }))
+  }
+
+  function initGame(deck: Deck) {
+    const cards = [...deck.getCards(), ...deck.getCards()]
+    setCards(shuffleArray(cards))
   }
 
   function flipCard(card: CardType) {
-    if (flippedCards.value.length < 2 && !card.matched) {
+    if (flippedCards.value.length < 2 && !card.matched && !card.flipped) {
+      card.flipped = true
       flippedCards.value.push(card)
     }
 
     if (flippedCards.value.length === 2) {
       const [first, second] = flippedCards.value
 
-      if (!first || !second) return // protection TypeScript
+      if (!first || !second) return
 
       setTimeout(() => {
-        if (first.image === second.image) {
+        if (first.imageUrl === second.imageUrl) {
           first.matched = true
           second.matched = true
 
@@ -36,7 +41,11 @@ export const useGameStore = defineStore('game', () => {
             discoveredMessages.value.push(first.message)
             remainingMessages.value = remainingMessages.value.filter((msg) => msg !== first.message)
           }
+        } else {
+          first.flipped = false
+          second.flipped = false
         }
+
         flippedCards.value.length = 0
       }, 800)
     }
@@ -55,6 +64,7 @@ export const useGameStore = defineStore('game', () => {
     flippedCards,
     discoveredMessages,
     remainingMessages,
+    initGame,
     setCards,
     flipCard,
     setRemainingMessages,

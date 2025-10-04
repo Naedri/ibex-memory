@@ -5,7 +5,7 @@
       <Card
         v-for="(card, index) in gameStore.cards"
         :key="index"
-        :imageSrc="card.image"
+        :imageUrl="card.imageUrl"
         :matched="card.matched"
         @flip="() => gameStore.flipCard(card)"
       />
@@ -15,48 +15,30 @@
 
 <script lang="ts" setup>
 import { onMounted } from 'vue'
+import { useRoute } from 'vue-router'
 import LeftBar from '../components/LeftBar.vue'
-import Card from '../components/Card.vue'
+import Card from '../components/BaseCard.vue'
 import { useGameStore } from '../stores/gameStore'
-import type { CardType } from '../stores/gameStore'
+import { useDeckStore } from '../stores/deckStore'
+import { Deck } from '@/models'
 
 const gameStore = useGameStore()
+const deckStore = useDeckStore()
+const route = useRoute()
 
-function importImages(): string[] {
-  const modules = import.meta.glob('../assets/images/*.{jpg,png}', { eager: true })
-  return Object.values(modules).map((mod: any) => mod.default)
-}
-
-function importMessages(): Promise<string[]> {
-  const modules = import.meta.glob('../assets/messages/*.txt', {
-    query: '?raw',
-    import: 'default',
-  })
-  const promises = Object.values(modules).map((loader) => loader() as Promise<string>)
-  return Promise.all(promises)
-}
-
-function shuffleArray<T>(array: T[]): T[] {
-  return array.sort(() => Math.random() - 0.5)
-}
-
-async function initGame(): Promise<void> {
-  const images = importImages()
-  const messages = await importMessages()
-
-  gameStore.setRemainingMessages([...messages])
-
-  const tempCards: CardType[] = []
-  images.forEach((img, i) => {
-    const message = messages[i % messages.length] ?? ''
-    tempCards.push({ image: img, matched: false, message })
-  })
-
-  gameStore.setCards(shuffleArray(tempCards))
+async function initGame(deckIndex: number): Promise<void> {
+  if (deckStore.decks.length == 0) await deckStore.loadDecks()
+  const deck = deckStore.getDeck(deckIndex)
+  if (deck instanceof Deck) gameStore.initGame(deck)
+  else console.error('Game initialization failed.')
 }
 
 onMounted(() => {
-  initGame()
+  const deckIndexParam = route.query.deckIndex as string
+  const deckIndex = parseInt(deckIndexParam, 10)
+  if (!isNaN(deckIndex)) {
+    initGame(deckIndex)
+  }
 })
 </script>
 

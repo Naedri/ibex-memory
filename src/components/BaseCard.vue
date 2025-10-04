@@ -1,6 +1,11 @@
 <template>
   <div class="card" :class="{ flipped: isFlipped || matched }" @click="flipCard">
-    <img v-if="isFlipped || matched" :src="imageSrc" alt="Memory card" />
+    <img
+      v-if="isFlipped || matched"
+      :src="imageUrl"
+      alt="Card"
+      class="w-full h-full object-cover"
+    />
     <div v-else class="card-back"></div>
   </div>
 </template>
@@ -9,7 +14,7 @@
 import { ref } from 'vue'
 
 interface Props {
-  imageSrc: string
+  imageUrl: string
   matched: boolean
 }
 

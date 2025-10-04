@@ -2,7 +2,16 @@
   <router-view />
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { onMounted } from 'vue'
+import { useDeckStore } from './stores/deckStore'
+
+const deckStore = useDeckStore()
+
+onMounted(() => {
+  deckStore.loadDecks()
+})
+</script>
 
 <style>
 html,

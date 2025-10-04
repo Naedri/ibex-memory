@@ -1,7 +1,7 @@
-````markdown
 # long-life-to-ibex
 
-Jeu Memory SPA avec **Vue 3**, **Vite**, **TypeScript**, **UnoCSS**, **Pinia** et **Vue Router**. Les cartes débloquent des messages `.txt` et une barre latérale suit les messages découverts.
+Jeu Memory SPA avec **Vue 3**, **Vite**, **TypeScript**, **UnoCSS**, **Pinia** et **Vue Router**.
+Les cartes débloquent des messages et une barre latérale suit les messages découverts.
 
 ## Installation & développement
 
@@ -10,7 +10,7 @@ git clone https://github.com/Naedri/long-life-to-ibex
 cd long-life-to-ibex
 npm install
 npm run dev
-````
+```
 
 ## Build & déploiement
 

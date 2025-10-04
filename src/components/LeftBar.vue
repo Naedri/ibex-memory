@@ -17,7 +17,7 @@ interface Props {
   discovered: string[]
 }
 
-const props = defineProps<Props>()
+defineProps<Props>()
 </script>
 
 <style>
