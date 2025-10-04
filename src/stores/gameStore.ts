@@ -16,9 +16,15 @@ export const useGameStore = defineStore('game', () => {
     cards.value = newCards.map((card) => ({ ...card, flipped: false }))
   }
 
+  function setMessages(newCards: CardType[]) {
+    remainingMessages.value = newCards.map(({ message }) => message)
+    discoveredMessages.value = []
+  }
+
   function initGame(deck: Deck) {
     const cards = [...deck.getCards(), ...deck.getCards()]
     setCards(shuffleArray(cards))
+    setMessages(deck.getCards())
   }
 
   function flipCard(card: CardType) {
@@ -65,7 +71,6 @@ export const useGameStore = defineStore('game', () => {
     discoveredMessages,
     remainingMessages,
     initGame,
-    setCards,
     flipCard,
     setRemainingMessages,
     setDiscoveredMessages,
