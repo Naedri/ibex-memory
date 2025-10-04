@@ -28,8 +28,12 @@ function importImages(): string[] {
 }
 
 function importMessages(): Promise<string[]> {
-  const modules = import.meta.glob('../assets/messages/*.txt', { as: 'raw' })
-  return Promise.all(Object.values(modules).map((loader) => loader() as Promise<string>))
+  const modules = import.meta.glob('../assets/messages/*.txt', {
+    query: '?raw',
+    import: 'default',
+  })
+  const promises = Object.values(modules).map((loader) => loader() as Promise<string>)
+  return Promise.all(promises)
 }
 
 function shuffleArray<T>(array: T[]): T[] {
@@ -53,9 +57,6 @@ async function initGame(): Promise<void> {
 
 onMounted(() => {
   initGame()
-  if (import.meta.hot) {
-    import.meta.hot.accept(['../assets/messages/*.txt'], () => initGame())
-  }
 })
 </script>
 
