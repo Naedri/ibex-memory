@@ -1,0 +1,1 @@
+var e=[{imageUrl:`https://cards.scryfall.io/art_crop/front/c/d/cd1cecb1-6776-4495-be56-b7dde65453f1.jpg`,text:`Gros dodo`},{imageUrl:`https://cards.scryfall.io/art_crop/front/1/2/1242203d-c9b5-4ab6-802e-e222f92291e9.jpg`,text:`Bon anniv`},{imageUrl:`https://cards.scryfall.io/art_crop/front/3/3/339a41a1-b36f-4b81-b74c-220d279c0e26.jpg`,text:`Bonne santé`}];export{e as default};
