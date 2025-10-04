@@ -6,7 +6,7 @@ import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 
 export default defineConfig({
-  base: '/long-life-to-ibex/',
+  base: 'https://naedri.github.io/long-life-to-ibex/',
   plugins: [UnoCSS(), vue(), vueDevTools()],
   resolve: {
     alias: {
