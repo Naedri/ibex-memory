@@ -28,32 +28,34 @@ export const useGameStore = defineStore('game', () => {
   }
 
   function flipCard(card: CardType) {
-    if (flippedCards.value.length < 2 && !card.matched && !card.flipped) {
-      card.flipped = true
-      flippedCards.value.push(card)
-    }
+    if (!card.matched && !card.flipped) {
+      if (flippedCards.value.length < 2) {
+        card.flipped = true
+        flippedCards.value.push(card)
+      }
 
-    if (flippedCards.value.length === 2) {
-      const [first, second] = flippedCards.value
+      if (flippedCards.value.length === 2) {
+        const [first, second] = flippedCards.value
+        if (!first || !second) return
 
-      if (!first || !second) return
+        setTimeout(() => {
+          if (first.imageUrl === second.imageUrl) {
+            first.matched = true
+            second.matched = true
 
-      setTimeout(() => {
-        if (first.imageUrl === second.imageUrl) {
-          first.matched = true
-          second.matched = true
-
-          if (!discoveredMessages.value.includes(first.message)) {
-            discoveredMessages.value.push(first.message)
-            remainingMessages.value = remainingMessages.value.filter((msg) => msg !== first.message)
+            const message = first.message
+            if (!discoveredMessages.value.includes(message)) {
+              discoveredMessages.value.push(message)
+              remainingMessages.value = remainingMessages.value.filter((msg) => msg !== message)
+            }
+          } else {
+            first.flipped = false
+            second.flipped = false
           }
-        } else {
-          first.flipped = false
-          second.flipped = false
-        }
 
-        flippedCards.value.length = 0
-      }, 800)
+          flippedCards.value.length = 0
+        }, 800)
+      }
     }
   }
 

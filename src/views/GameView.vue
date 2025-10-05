@@ -7,6 +7,7 @@
         :key="index"
         :imageUrl="card.imageUrl"
         :matched="card.matched"
+        :flipped="card.flipped"
         @flip="() => gameStore.flipCard(card)"
       />
     </div>

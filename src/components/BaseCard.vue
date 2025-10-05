@@ -1,20 +1,14 @@
 <template>
-  <div class="card" :class="{ flipped: isFlipped || matched }" @click="flipCard">
-    <img
-      v-if="isFlipped || matched"
-      :src="imageUrl"
-      alt="Card"
-      class="w-full h-full object-cover"
-    />
+  <div class="card" :class="{ flipped: flipped || matched }" @click="flipCard">
+    <img v-if="flipped || matched" :src="imageUrl" alt="Card" class="w-full h-full object-cover" />
     <div v-else class="card-back"></div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-
 interface Props {
   imageUrl: string
+  flipped: boolean
   matched: boolean
 }
 
@@ -23,11 +17,8 @@ const emits = defineEmits<{
   (e: 'flip'): void
 }>()
 
-const isFlipped = ref(false)
-
 function flipCard(): void {
-  if (!isFlipped.value && !props.matched) {
-    isFlipped.value = true
+  if (!props.flipped && !props.matched) {
     emits('flip')
   }
 }
