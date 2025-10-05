@@ -60,8 +60,6 @@ const useGameStore = defineStore('game', () => {
 
           flippedCards.value = []
         }, 500)
-      } else {
-        flippedCards.value = []
       }
     }
   }
