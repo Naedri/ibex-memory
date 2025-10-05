@@ -13,8 +13,24 @@
 </template>
 
 <script lang="ts" setup>
+import { ref, onMounted, onUnmounted } from 'vue'
 import { useEventTime } from '@/stores'
 
 const eventTime = useEventTime()
-const timeDiff = eventTime.getTimeRemaining()
+const timeDiff = ref(eventTime.getTimeRemaining(new Date()))
+
+let interval: number
+
+const updateTimeDiff = () => {
+  timeDiff.value = eventTime.getTimeRemaining(new Date())
+}
+
+onMounted(() => {
+  updateTimeDiff()
+  interval = window.setInterval(updateTimeDiff, 1000)
+})
+
+onUnmounted(() => {
+  clearInterval(interval)
+})
 </script>
