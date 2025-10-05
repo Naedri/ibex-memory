@@ -1,0 +1,40 @@
+{
+  "author": "Simon",
+  "cards": [
+    {
+      "imageUrl": "https://tse4.mm.bing.net/th/id/OIP._BJEnEYNlNfnyuxB5B8FDQHaKE?cb=12&w=474&h=474&c=7&p=0",
+      "text": "Invoquez un jeton \"Jean Reno\" sur le champs de bataille. Retirez le l'annif suivant",
+      "cardName": "Jean Reno"
+    },
+    {
+      "imageUrl": "https://media.tenor.com/blwK0rdIId8AAAAj/cat-oiiaoiia-cat.gif",
+      "text": "Vous ne pouvez plus que dire oo ee a e a jusqu'à la fin de votre tour",
+      "cardName": "Spinning cat"
+    },
+    {
+      "imageUrl": "https://godotengine.org/assets/press/logo_large_monochrome_light.png",
+      "text": "Dès que vous invoquez Godot sur le champs de bataille, vous transformer l'espace qui vous entour en espace latent, ce qui vous permet de manipuler le champs de bataille avec plus d'aisance",
+      "cardName": "Godot"
+    },
+    {
+      "imageUrl": "https://tse2.mm.bing.net/th/id/OIP.eZDMtNfCHkEkVtOLGTlk5AHaIV?cb=12&w=474&h=474&c=7&p=0",
+      "text": "Vous vous transformez en gigachad jusqu'à la fin de la partie. Vos adversaires fixent vos muscles et ne peuvent plus regarder leur main.",
+      "cardName": "Gigachad"
+    },
+    {
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/11/Louis_de_Fun%C3%A8s%2C_Les_Bons_Vivants%2C_1965.jpg?20191028235524",
+      "text": "Si c'est votre anniversaire et que vous invoquez Louis de Funès sur le champs de bataille, une musique de Vladimir Cosma se lance",
+      "cardName": "Louis"
+    },
+    {
+      "imageUrl": "https://media.licdn.com/dms/image/v2/D4D35AQGb4QVrUdTMsA/profile-framedphoto-shrink_200_200/B4DZWE.CDyHYAc-/0/1741692609040?e=1760292000&v=beta&t=ptjIk4GGXgFpzDHhXHRhuPnIT66IypmVggZ8QHBJThA",
+      "text": "Flash - invoquez la sur la table pour avoir instantanément une gaufre.",
+      "cardName": "Géraud la gauffre 
+    },
+    {
+      "imageUrl": "https://www.3ds.com/assets/3ds-navigation/3DS_corporate-logo_white.svg",
+      "text": "Flash - Vous trouvez instantanément un travail mais il est en région parisienne.",
+      "cardName": "3ds"
+    }
+  ]
+}
