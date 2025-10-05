@@ -1,5 +1,6 @@
 export default {
-  gameName: '🐐 Ibex memory - Long life to ibex 🎂',
+  gameName: '🐐 Ibex memory',
+  gameSlogan: '🎂 Long life to ibex ! 🎆🎇🌠',
   gameDescription: `Expansible à l'infini avec d'autres deck de MagicVille. Accroche ta ceinture, j'ai plus de frein!`,
   gameDescriptionPlayer: 'Spécialement conçu cette nuit pour toi {player}!',
   deck: 'deck',

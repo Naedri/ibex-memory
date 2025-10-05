@@ -3,14 +3,15 @@
     <TooLate v-if="eventTime.isTooLate && !isTimeUp" />
     <TooEarly v-else-if="eventTime.isTooEarly && !isTimeUp" />
     <template v-else>
-      <h1 class="text-3xl font-bold mb-6">{{ $t('gameName') }}</h1>
+      <h1 class="text-3xl font-bold">{{ $t('gameName') }}</h1>
+      <h2 class="text-2xl font-bold">{{ $t('gameSlogan') }}</h2>
       <p class="max-w-xl text-base-700">
         {{ $t('gameDescriptionPlayer', { player: playerName }) }}
       </p>
       <p class="max-w-xl text-base-700 mb-6">
         {{ $t('gameDescription') }}
       </p>
-      <div class="flex flex-wrap gap-2 mb-4">
+      <div class="flex flex-wrap gap-2">
         <router-link
           v-for="[name, deck] in decks"
           :key="name"
