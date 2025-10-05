@@ -2,7 +2,7 @@
   <div class="app flex">
     <LeftBar :remaining="gameStore.remainingMessages" :discovered="gameStore.discoveredMessages" />
     <div class="game-grid grid grid-cols-4 gap-4 p-4">
-      <Card
+      <BaseCard
         v-for="(card, index) in gameStore.cards"
         :key="index"
         :imageUrl="card.imageUrl"
@@ -17,10 +17,8 @@
 <script lang="ts" setup>
 import { onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import LeftBar from '../components/LeftBar.vue'
-import Card from '../components/BaseCard.vue'
-import { useGameStore } from '../stores/gameStore'
-import { useDeckStore } from '../stores/deckStore'
+import { BaseCard, LeftBar } from '@/components'
+import { useDeckStore, useGameStore } from '@/stores'
 import { Deck } from '@/models'
 
 const gameStore = useGameStore()

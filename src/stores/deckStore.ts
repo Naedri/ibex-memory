@@ -4,7 +4,7 @@ import type { Ref } from 'vue'
 import { Deck } from '@/models'
 import type { DeckItemType } from '@/models'
 
-export const useDeckStore = defineStore('decks', () => {
+const useDeckStore = defineStore('decks', () => {
   const decks: Ref<Deck[]> = ref([])
 
   async function loadDecks() {
@@ -38,3 +38,5 @@ export const useDeckStore = defineStore('decks', () => {
     clearDecks,
   }
 })
+
+export default useDeckStore

@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import type { CardType, Deck } from '@/models'
 
-export const useGameStore = defineStore('game', () => {
+const useGameStore = defineStore('game', () => {
   const cards = ref<CardType[]>([])
   const flippedCards = ref<CardType[]>([])
   const discoveredMessages = ref<string[]>([])
@@ -78,3 +78,5 @@ export const useGameStore = defineStore('game', () => {
     setDiscoveredMessages,
   }
 })
+
+export default useGameStore

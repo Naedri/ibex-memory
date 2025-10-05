@@ -17,7 +17,7 @@
 
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue'
-import { useDeckStore } from '../stores/deckStore'
+import { useDeckStore } from '@/stores'
 
 const totalDecks = ref(0)
 const deckStore = useDeckStore()

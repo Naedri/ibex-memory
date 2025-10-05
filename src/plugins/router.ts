@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import GameView from '../views/GameView.vue'
+import { GameView, HomeView } from '@/views'
 
 const routes: RouteRecordRaw[] = [
   { path: '/', name: 'Home', component: HomeView },

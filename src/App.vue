@@ -4,7 +4,7 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { useDeckStore } from './stores/deckStore'
+import { useDeckStore } from '@/stores'
 
 const deckStore = useDeckStore()
 
