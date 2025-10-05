@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import type { Ref } from 'vue'
 import { Deck } from '@/models'
-import type { DeckItemType } from '@/models'
+import type { DeckItemType } from '@/types'
 
 const useDeckStore = defineStore('decks', () => {
   const decks: Ref<Deck[]> = ref([])

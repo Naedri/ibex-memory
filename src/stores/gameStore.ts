@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import type { CardType, Deck } from '@/models'
+import type { CardType } from '@/types'
+import type { Deck } from '@/models'
 
 const useGameStore = defineStore('game', () => {
   const cards = ref<CardType[]>([])

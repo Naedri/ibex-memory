@@ -1,2 +1,4 @@
 export { default as BaseCard } from './BaseCard.vue'
 export { default as LeftBar } from './LeftBar.vue'
+export { default as TooLate } from './TooLate.vue'
+export { default as TooEarly } from './TooEarly.vue'

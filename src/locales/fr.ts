@@ -3,4 +3,13 @@ export default {
   deck: 'deck',
   messageHidden: 'Messages cachés',
   messageDiscovered: 'Messages découverts',
+  tooEarlyTitle: '⏰ Pas encore disponible',
+  tooEarlyDescription: 'Cet évènement débutera prochainement',
+  tooLateTitle: '⏳ Oups, trop tard!',
+  tooLateDescription: 'Cet évènement est terminé',
+  timeRemaining: 'temps restant',
+  days: 'jour | jours',
+  hours: 'heure | heures',
+  minutes: 'minute | minutes',
+  seconds: 'seconde | secondes',
 }

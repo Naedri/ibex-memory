@@ -1,9 +1,4 @@
-import type { CardType } from './card'
-
-export type DeckItemType = {
-  imageUrl: string
-  text: string
-}
+import type { CardType, DeckItemType } from '@/types'
 
 export class Deck {
   private items: DeckItemType[]
