@@ -1,4 +1,4 @@
-import type { CardType, DeckCard } from '@/types'
+import type { Card, DeckCard } from '@/types'
 
 export class Deck {
   private items: DeckCard[]
@@ -11,7 +11,7 @@ export class Deck {
     this.fileName = fileName
   }
 
-  getCards(): CardType[] {
+  getCards(): Card[] {
     return this.items.map(({ imageUrl, text, cardName }) => ({
       imageUrl,
       message: text,

@@ -1,10 +1,6 @@
 <template>
   <div class="flex h-screen">
-    <LeftBar
-      :remaining="gameStore.remainingMessages"
-      :discovered="gameStore.discoveredMessages"
-      class="border-r border-border"
-    />
+    <LeftBar :messages="gameStore.getMessagesArr()" class="border-r border-border" />
     <div class="flex-1 grid grid-cols-4 gap-4 p-4 auto-rows-[140px]">
       <BaseCard
         v-for="(card, index) in gameStore.cards"

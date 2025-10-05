@@ -1,14 +1,13 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-import type { CardType } from '@/types'
+import type { Ref } from 'vue'
+import type { Card, CardMessage } from '@/types'
 import type { Deck } from '@/models'
 
 const useGameStore = defineStore('game', () => {
-  const cards = ref<CardType[]>([])
-  const flippedCards = ref<CardType[]>([])
-  const discoveredMessages = ref<string[]>([])
-  const remainingMessages = ref<string[]>([])
-
+  const cards = ref<Card[]>([])
+  const flippedCards = ref<Card[]>([])
+  const messages: Ref<Map<string, CardMessage>> = ref(new Map())
   const allCardsMatched = computed(() => {
     return cards.value.every((card) => card.matched)
   })
@@ -17,13 +16,36 @@ const useGameStore = defineStore('game', () => {
     return array.sort(() => Math.random() - 0.5)
   }
 
-  function setCards(newCards: CardType[]) {
+  function setCards(newCards: Card[]) {
     cards.value = newCards.map((card) => ({ ...card, flipped: false }))
   }
 
-  function setMessages(newCards: CardType[]) {
-    remainingMessages.value = newCards.map(({ message }) => message)
-    discoveredMessages.value = []
+  function getMessages() {
+    return messages
+  }
+
+  function getMessagesArr() {
+    return Array.from(messages.value.values())
+  }
+
+  function clearMessages() {
+    messages.value.clear()
+  }
+
+  function addMessage(newCard: Card) {
+    const message = { message: newCard.message, disclosed: false }
+    messages.value.set(newCard.imageUrl, message)
+  }
+
+  function setMessages(newCards: Card[]) {
+    clearMessages()
+    newCards.forEach(addMessage)
+  }
+
+  function revealMessage(imageUrl: string) {
+    const message = messages.value.get(imageUrl)
+    if (message) message.disclosed = true
+    else console.error('message not found')
   }
 
   function initGame(deck: Deck) {
@@ -32,7 +54,7 @@ const useGameStore = defineStore('game', () => {
     setMessages(deck.getCards())
   }
 
-  function revealCard(card: CardType) {
+  function revealCard(card: Card) {
     if (!card.matched && !card.flipped) {
       if (flippedCards.value.length < 2) {
         card.flipped = true
@@ -48,11 +70,8 @@ const useGameStore = defineStore('game', () => {
             first.matched = true
             second.matched = true
 
-            const message = first.message
-            if (!discoveredMessages.value.includes(message)) {
-              discoveredMessages.value.push(message)
-              remainingMessages.value = remainingMessages.value.filter((msg) => msg !== message)
-            }
+            const imageUrl = first.imageUrl
+            revealMessage(imageUrl)
           } else {
             first.flipped = false
             second.flipped = false
@@ -64,24 +83,14 @@ const useGameStore = defineStore('game', () => {
     }
   }
 
-  function setRemainingMessages(msgs: string[]) {
-    remainingMessages.value = msgs
-  }
-
-  function setDiscoveredMessages(msgs: string[]) {
-    discoveredMessages.value = msgs
-  }
-
   return {
     allCardsMatched,
     cards,
     flippedCards,
-    discoveredMessages,
-    remainingMessages,
     initGame,
     revealCard,
-    setRemainingMessages,
-    setDiscoveredMessages,
+    getMessages,
+    getMessagesArr,
   }
 })
 
