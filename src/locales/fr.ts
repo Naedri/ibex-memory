@@ -1,3 +1,6 @@
 export default {
-  hello: 'Bonjour le monde !',
+  gameName: 'Memory Game',
+  deck: 'deck',
+  messageHidden: 'Messages cachés',
+  messageDiscovered: 'Messages découverts',
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="home flex flex-col items-center justify-center h-screen">
-    <h1 class="text-3xl mb-6">Memory Game</h1>
+    <h1 class="text-3xl mb-6">{{ $t('gameName') }}</h1>
 
     <div class="flex flex-wrap gap-2 mb-4">
       <router-link
@@ -9,7 +9,7 @@
         :to="{ name: 'Game', query: { deckIndex: n - 1 } }"
         class="px-4 py-2 rounded border cursor-pointer"
       >
-        Deck {{ n }}
+        {{ $t('deck') }} {{ n }}
       </router-link>
     </div>
   </div>

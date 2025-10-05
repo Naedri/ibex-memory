@@ -1,10 +1,10 @@
 <template>
   <div class="left-bar">
-    <h3>Messages à découvrir</h3>
+    <h3>{{ $t('messageHidden') }}</h3>
     <ul>
       <li v-for="msg in remaining" :key="msg">???</li>
     </ul>
-    <h3>Messages découverts</h3>
+    <h3>{{ $t('messageDiscovered') }}</h3>
     <ul>
       <li v-for="msg in discovered" :key="msg">{{ msg }}</li>
     </ul>
