@@ -2,7 +2,7 @@
   <div class="left-bar">
     <h3>Messages à découvrir</h3>
     <ul>
-      <li v-for="msg in remaining" :key="msg">{{ msg }}</li>
+      <li v-for="msg in remaining" :key="msg">???</li>
     </ul>
     <h3>Messages découverts</h3>
     <ul>
