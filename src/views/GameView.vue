@@ -11,22 +11,26 @@
         @reveal="() => gameStore.revealCard(card)"
       />
     </div>
-    <div v-if="gameStore.allCardsMatched" class="completion-message">
-      <h2>{{ $t('congrats') }}</h2>
-    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { onMounted } from 'vue'
+import { onMounted, watch, inject } from 'vue'
 import { useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { BaseCard, LeftBar } from '@/components'
 import { useDeckStore, useGameStore } from '@/stores'
 import { Deck } from '@/models'
+import type { Ref } from 'vue'
+import type { Notifier } from '@/types'
 
+const { t: $t } = useI18n()
 const gameStore = useGameStore()
 const deckStore = useDeckStore()
 const route = useRoute()
+
+const notif = inject<Ref<Notifier>>('notif')
+if (!notif) throw new Error('notif not provided')
 
 async function initGame(deckIndex: number): Promise<void> {
   if (deckStore.decks.length == 0) await deckStore.loadDecks()
@@ -38,10 +42,15 @@ async function initGame(deckIndex: number): Promise<void> {
 onMounted(() => {
   const deckIndexParam = route.query.deckIndex as string
   const deckIndex = parseInt(deckIndexParam, 10)
-  if (!isNaN(deckIndex)) {
-    initGame(deckIndex)
-  }
+  if (!isNaN(deckIndex)) initGame(deckIndex)
 })
+
+watch(
+  () => gameStore.allCardsMatched,
+  (matched) => {
+    if (matched) notif.value.info($t('congrats'))
+  },
+)
 </script>
 
 <style>
@@ -54,11 +63,5 @@ onMounted(() => {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   gap: 10px;
-}
-.completion-message {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 100;
 }
 </style>
