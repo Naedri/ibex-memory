@@ -15,6 +15,7 @@
       <li
         v-for="msg in discovered"
         :key="msg"
+        :title="msg"
         class="bg-surface/50 rounded px-2 py-1 text-center text-text overflow-hidden transition-all duration-500 max-h-10"
       >
         {{ msg }}

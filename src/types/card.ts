@@ -3,4 +3,5 @@ export type CardType = {
   message: string
   matched: boolean
   flipped: boolean
+  name: string
 }

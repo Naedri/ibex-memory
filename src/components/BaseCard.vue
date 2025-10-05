@@ -11,6 +11,7 @@
       v-if="flipped || matched"
       :src="imageUrl"
       alt="Card"
+      :title="name"
       class="w-full h-full object-cover rounded-xl"
     />
     <div
@@ -27,6 +28,7 @@ interface Props {
   imageUrl: string
   flipped: boolean
   matched: boolean
+  name: string
 }
 
 const props = defineProps<Props>()

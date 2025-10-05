@@ -12,6 +12,7 @@
         :imageUrl="card.imageUrl"
         :matched="card.matched"
         :flipped="card.flipped"
+        :name="card.name"
         @reveal="() => gameStore.revealCard(card)"
       />
     </div>

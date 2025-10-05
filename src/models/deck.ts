@@ -8,11 +8,12 @@ export class Deck {
   }
 
   getCards(): CardType[] {
-    return this.items.map(({ imageUrl, text }) => ({
+    return this.items.map(({ imageUrl, text, cardName }) => ({
       imageUrl,
       message: text,
       matched: false,
       flipped: false,
+      name: cardName,
     }))
   }
 
