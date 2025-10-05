@@ -47,5 +47,6 @@ Pour forcer l'affichage des decks disponibles le paramètre url `timeUp` peut ê
 
 ### Decks
 
-D'autres decks peuvent être ajoutées dans le dossier [`./src/assets/decks/`](./src/assets/decks/).
-Ils doivent respecter le type `DeckCardFile` décrit dans [`./src/types/deck.ts`](./src/types/deck.ts)
+D'autres decks peuvent être ajoutées dans le dossier [`./src/assets/decks/`](./src/assets/decks/) en tant que tableau de type `DeckCardFile[]`.
+`DeckCardFile`est décrit dans [`./src/types/deck.ts`](./src/types/deck.ts).
+L'attribut `imageUrl`de chaque cartes doit être unique.
