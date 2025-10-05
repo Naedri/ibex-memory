@@ -6,12 +6,17 @@
       <h1 class="text-3xl font-bold mb-6">{{ $t('gameName') }}</h1>
       <div class="flex flex-wrap gap-2 mb-4">
         <router-link
-          v-for="n in totalDecks"
-          :key="n"
-          :to="{ name: 'Game', query: { deckIndex: n - 1 } }"
+          v-for="[name, deck] in decks"
+          :key="name"
+          :to="{ name: 'Game', query: { deckName: name } }"
           class="btn-primary"
         >
-          {{ $t('deck') }} {{ n }}
+          {{
+            $t('deckDescription', {
+              author: deck.getAuthor(),
+              size: deck.getSize(),
+            })
+          }}
         </router-link>
       </div>
     </template>
@@ -22,13 +27,14 @@
 import { ref, onMounted } from 'vue'
 import { useDeckStore, useEventTime } from '@/stores'
 import { TooLate, TooEarly } from '@/components'
+import type { Deck } from '@/models'
 
-const totalDecks = ref(0)
+const decks = ref<Map<string, Deck>>(new Map())
 const deckStore = useDeckStore()
 const eventTime = useEventTime()
 
 onMounted(async () => {
-  if (deckStore.decks.length === 0) await deckStore.loadDecks()
-  totalDecks.value = deckStore.decks.length
+  if (deckStore.isEmpty()) await deckStore.loadDecks()
+  decks.value = deckStore.getDecks()
 })
 </script>

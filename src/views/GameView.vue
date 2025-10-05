@@ -37,17 +37,15 @@ const route = useRoute()
 const notif = inject<Ref<Notifier>>('notif')
 if (!notif) throw new Error('notif not provided')
 
-async function initGame(deckIndex: number): Promise<void> {
-  if (deckStore.decks.length === 0) await deckStore.loadDecks()
-  const deck = deckStore.getDeck(deckIndex)
+async function initGame(deckName: string): Promise<void> {
+  const deck = await deckStore.loadDeck(deckName)
   if (deck instanceof Deck) gameStore.initGame(deck)
   else console.error('Game initialization failed.')
 }
 
 onMounted(() => {
-  const deckIndexParam = route.query.deckIndex as string
-  const deckIndex = parseInt(deckIndexParam, 10)
-  if (!isNaN(deckIndex)) initGame(deckIndex)
+  const deckName = route.query.deckName as string
+  if (deckName) initGame(deckName)
 })
 
 watch(

@@ -1,10 +1,14 @@
-import type { CardType, DeckItemType } from '@/types'
+import type { CardType, DeckCard } from '@/types'
 
 export class Deck {
-  private items: DeckItemType[]
+  private items: DeckCard[]
+  private author: string
+  private fileName: string
 
-  constructor(items: DeckItemType[]) {
+  constructor(items: DeckCard[], fileName = '', author = '') {
     this.items = items
+    this.author = author
+    this.fileName = fileName
   }
 
   getCards(): CardType[] {
@@ -15,6 +19,18 @@ export class Deck {
       flipped: false,
       name: cardName,
     }))
+  }
+
+  getSize(): number {
+    return this.items.length
+  }
+
+  getAuthor(): string {
+    return this.author
+  }
+
+  getFileName(): string {
+    return this.fileName
   }
 
   getTexts(): string[] {

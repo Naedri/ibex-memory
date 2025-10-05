@@ -1,6 +1,7 @@
 export default {
   gameName: 'Memory Game',
   deck: 'deck',
+  deckDescription: 'Deck de {size} fait par {author}',
   messageHidden: 'Messages cachés',
   messageDiscovered: 'Messages découverts',
   tooEarlyTitle: '⏰ Pas encore disponible',
