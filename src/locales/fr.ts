@@ -12,4 +12,5 @@ export default {
   hours: 'heure | heures',
   minutes: 'minute | minutes',
   seconds: 'seconde | secondes',
+  congrats: 'Bien joué! 🎈',
 }

@@ -11,6 +11,9 @@
         @reveal="() => gameStore.revealCard(card)"
       />
     </div>
+    <div v-if="gameStore.allCardsMatched" class="completion-message">
+      <h2>{{ $t('congrats') }}</h2>
+    </div>
   </div>
 </template>
 
@@ -44,11 +47,18 @@ onMounted(() => {
 <style>
 .app {
   height: 100vh;
+  position: relative;
 }
 .game-grid {
   flex: 1;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   gap: 10px;
+}
+.completion-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 100;
 }
 </style>

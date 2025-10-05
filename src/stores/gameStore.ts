@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import type { CardType } from '@/types'
 import type { Deck } from '@/models'
 
@@ -8,6 +8,10 @@ const useGameStore = defineStore('game', () => {
   const flippedCards = ref<CardType[]>([])
   const discoveredMessages = ref<string[]>([])
   const remainingMessages = ref<string[]>([])
+
+  const allCardsMatched = computed(() => {
+    return cards.value.every((card) => card.matched)
+  })
 
   function shuffleArray<T>(array: T[]): T[] {
     return array.sort(() => Math.random() - 0.5)
@@ -69,6 +73,7 @@ const useGameStore = defineStore('game', () => {
   }
 
   return {
+    allCardsMatched,
     cards,
     flippedCards,
     discoveredMessages,
