@@ -39,7 +39,7 @@ const useGameStore = defineStore('game', () => {
         flippedCards.value.push(card)
       }
 
-      if (flippedCards.value.length === 2) {
+      if (flippedCards.value.length == 2) {
         const [first, second] = flippedCards.value
         if (!first || !second) return
 
@@ -59,7 +59,9 @@ const useGameStore = defineStore('game', () => {
           }
 
           flippedCards.value = []
-        }, 800)
+        }, 500)
+      } else {
+        flippedCards.value = []
       }
     }
   }
