@@ -1,18 +1,19 @@
-name: Deploy Vite build to Pages
+# Simple workflow for deploying static content to GitHub Pages
+name: Deploy static content to Pages
 
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches:
-      - main
-  # Allow running workflow manually from the Actions tab
+    branches: ['main']
+
+  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+# Sets the GITHUB_TOKEN permissions to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
-
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 # However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
@@ -25,13 +26,13 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - name: Set up Node
+        uses: actions/setup-node@v5
         with:
-          node-version: 21
-          cache: npm
+          node-version: lts/*
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
@@ -39,15 +40,16 @@ jobs:
       # This enables Pages and gives us the base path we need for the Vite build
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
 
       # See: https://vite.dev/guide/build.html#public-base-path
       - name: Build with Vite
         run: npm run build-only -- --base "${{ steps.pages.outputs.base_path }}"
 
       - name: Upload production build
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
+          # Upload dist folder
           path: ./dist
 
   # Deployment job

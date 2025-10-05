@@ -2,6 +2,7 @@
   "name": "long-life-to-ibex",
   "version": "0.0.0",
   "private": true,
+  "homepage": "https://naedri.github.io/long-life-to-ibex/",
   "type": "module",
   "engines": {
     "node": "^20.19.0 || >=22.12.0"
