@@ -8,7 +8,7 @@ const routes: RouteRecordRaw[] = [
 ]
 
 const router = createRouter({
-  history: createWebHistory('/long-life-to-ibex/'),
+  history: createWebHistory('/ibex-memory/'),
   routes,
 })
 

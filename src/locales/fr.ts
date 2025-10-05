@@ -1,5 +1,7 @@
 export default {
-  gameName: 'Memory Game',
+  gameName: '🐐 Ibex memory - Long life to ibex 🎂',
+  gameDescription: `Expansible à l'infini avec d'autres deck de MagicVille. Accroche ta ceinture, j'ai plus de frein!`,
+  gameDescriptionPlayer: 'Spécialement conçu cette nuit pour toi {player}!',
   deck: 'deck',
   deckDescription: 'Deck de {size} fait par {author}',
   message: 'message | messages',
