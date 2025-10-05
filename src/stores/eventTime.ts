@@ -5,8 +5,8 @@ import type { TimeRemaining } from '@/types'
 const useEventTime = defineStore('eventTime', () => {
   const now = new Date()
 
-  const startTime = new Date(2025, 10, 5, 19, 30)
-  const endTime = new Date(2025, 10, 5, 21, 30)
+  const startTime = new Date(2025, 9, 4, 19, 30)
+  const endTime = new Date(2025, 9, 6, 21, 30)
 
   const isTooEarly = computed(() => now < startTime)
   const isTooLate = computed(() => now > endTime)
