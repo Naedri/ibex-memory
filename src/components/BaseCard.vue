@@ -1,5 +1,5 @@
 <template>
-  <div class="card" :class="{ flipped: flipped || matched }" @click="flipCard">
+  <div class="card" :class="{ flipped: flipped || matched }" @click="handleClick">
     <img v-if="flipped || matched" :src="imageUrl" alt="Card" class="w-full h-full object-cover" />
     <div v-else class="card-back"></div>
   </div>
@@ -14,12 +14,12 @@ interface Props {
 
 const props = defineProps<Props>()
 const emits = defineEmits<{
-  (e: 'flip'): void
+  (e: 'reveal'): void
 }>()
 
-function flipCard(): void {
+function handleClick(): void {
   if (!props.flipped && !props.matched) {
-    emits('flip')
+    emits('reveal')
   }
 }
 </script>

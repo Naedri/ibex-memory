@@ -8,7 +8,7 @@
         :imageUrl="card.imageUrl"
         :matched="card.matched"
         :flipped="card.flipped"
-        @flip="() => gameStore.flipCard(card)"
+        @reveal="() => gameStore.revealCard(card)"
       />
     </div>
   </div>

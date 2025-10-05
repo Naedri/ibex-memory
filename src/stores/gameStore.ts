@@ -27,7 +27,7 @@ export const useGameStore = defineStore('game', () => {
     setMessages(deck.getCards())
   }
 
-  function flipCard(card: CardType) {
+  function revealCard(card: CardType) {
     if (!card.matched && !card.flipped) {
       if (flippedCards.value.length < 2) {
         card.flipped = true
@@ -53,7 +53,7 @@ export const useGameStore = defineStore('game', () => {
             second.flipped = false
           }
 
-          flippedCards.value.length = 0
+          flippedCards.value = []
         }, 800)
       }
     }
@@ -73,7 +73,7 @@ export const useGameStore = defineStore('game', () => {
     discoveredMessages,
     remainingMessages,
     initGame,
-    flipCard,
+    revealCard,
     setRemainingMessages,
     setDiscoveredMessages,
   }
