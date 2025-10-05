@@ -9,6 +9,10 @@ Une démo est disponible au lient suivant :
 
 > [naedri.github.io/ibex-memory/](https://naedri.github.io/ibex-memory/)
 
+<p>
+<img alt="Demo snap" src="./src/assets/demo/snap.png" width="500">
+</p>
+
 ## Installation & développement
 
 ```bash
@@ -43,7 +47,7 @@ Ce projet utilise les bibliothèques suivantes :
 La page d'accueil ne proposera de jouer qu'en temps voulu.
 Pour forcer l'affichage des decks disponibles le paramètre url `timeUp` peut être utilisé tel que :
 
-> [naedri.github.io/ibex-memory/?timeUp=true](https://naedri.github.io/ibex-memory/?timeUp=true)
+- [naedri.github.io/ibex-memory/?timeUp=true](https://naedri.github.io/ibex-memory/?timeUp=true)
 
 ### Decks
 
