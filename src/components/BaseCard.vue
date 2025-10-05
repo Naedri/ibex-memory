@@ -1,7 +1,24 @@
 <template>
-  <div class="card" :class="{ flipped: flipped || matched }" @click="handleClick">
-    <img v-if="flipped || matched" :src="imageUrl" alt="Card" class="w-full h-full object-cover" />
-    <div v-else class="card-back"></div>
+  <div
+    class="card-base w-[100px] h-[140px] cursor-pointer transition-transform duration-300"
+    :class="{
+      'rotate-y-180': flipped || matched,
+      'border-2 border-success': flipped,
+    }"
+    @click="handleClick"
+  >
+    <img
+      v-if="flipped || matched"
+      :src="imageUrl"
+      alt="Card"
+      class="w-full h-full object-cover rounded-xl"
+    />
+    <div
+      v-else
+      class="w-full h-full bg-muted rounded-xl flex items-center justify-center text-white font-semibold select-none"
+    >
+      ?
+    </div>
   </div>
 </template>
 
@@ -13,29 +30,11 @@ interface Props {
 }
 
 const props = defineProps<Props>()
-const emits = defineEmits<{
+const emit = defineEmits<{
   (e: 'reveal'): void
 }>()
 
 function handleClick(): void {
-  if (!props.flipped && !props.matched) {
-    emits('reveal')
-  }
+  if (!props.flipped && !props.matched) emit('reveal')
 }
 </script>
-
-<style>
-.card {
-  width: 100px;
-  height: 140px;
-  cursor: pointer;
-}
-.card-back {
-  background: gray;
-  width: 100%;
-  height: 100%;
-}
-.flipped {
-  border: 2px solid green;
-}
-</style>

@@ -1,15 +1,15 @@
 <template>
-  <div class="home flex flex-col items-center justify-center h-screen">
+  <div class="flex flex-col items-center justify-center h-screen text-center">
     <TooLate v-if="eventTime.isTooLate" />
     <TooEarly v-else-if="eventTime.isTooEarly" />
     <template v-else>
-      <h1 class="text-3xl mb-6">{{ $t('gameName') }}</h1>
+      <h1 class="text-3xl font-bold mb-6">{{ $t('gameName') }}</h1>
       <div class="flex flex-wrap gap-2 mb-4">
         <router-link
           v-for="n in totalDecks"
           :key="n"
           :to="{ name: 'Game', query: { deckIndex: n - 1 } }"
-          class="px-4 py-2 rounded border cursor-pointer"
+          class="btn-primary"
         >
           {{ $t('deck') }} {{ n }}
         </router-link>
@@ -28,13 +28,7 @@ const deckStore = useDeckStore()
 const eventTime = useEventTime()
 
 onMounted(async () => {
-  if (deckStore.decks.length == 0) await deckStore.loadDecks()
+  if (deckStore.decks.length === 0) await deckStore.loadDecks()
   totalDecks.value = deckStore.decks.length
 })
 </script>
-
-<style>
-.home {
-  text-align: center;
-}
-</style>

@@ -1,7 +1,11 @@
 <template>
-  <div class="app flex">
-    <LeftBar :remaining="gameStore.remainingMessages" :discovered="gameStore.discoveredMessages" />
-    <div class="game-grid grid grid-cols-4 gap-4 p-4">
+  <div class="flex h-screen">
+    <LeftBar
+      :remaining="gameStore.remainingMessages"
+      :discovered="gameStore.discoveredMessages"
+      class="border-r border-border"
+    />
+    <div class="flex-1 grid grid-cols-4 gap-4 p-4 auto-rows-[140px]">
       <BaseCard
         v-for="(card, index) in gameStore.cards"
         :key="index"
@@ -33,7 +37,7 @@ const notif = inject<Ref<Notifier>>('notif')
 if (!notif) throw new Error('notif not provided')
 
 async function initGame(deckIndex: number): Promise<void> {
-  if (deckStore.decks.length == 0) await deckStore.loadDecks()
+  if (deckStore.decks.length === 0) await deckStore.loadDecks()
   const deck = deckStore.getDeck(deckIndex)
   if (deck instanceof Deck) gameStore.initGame(deck)
   else console.error('Game initialization failed.')
@@ -52,16 +56,3 @@ watch(
   },
 )
 </script>
-
-<style>
-.app {
-  height: 100vh;
-  position: relative;
-}
-.game-grid {
-  flex: 1;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  gap: 10px;
-}
-</style>

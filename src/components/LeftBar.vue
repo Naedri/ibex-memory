@@ -1,14 +1,26 @@
 <template>
-  <div class="left-bar">
-    <h3>{{ $t('messageHidden') }}</h3>
-    <ul>
-      <li v-for="msg in remaining" :key="msg">???</li>
+  <aside class="w-[200px] p-4 border-r border-border h-screen overflow-y-auto">
+    <h3 class="text-lg font-semibold mb-2">{{ $t('messageHidden') }}</h3>
+    <ul class="mb-4 space-y-1">
+      <li
+        v-for="(msg, index) in remaining"
+        :key="msg"
+        class="bg-surface/50 rounded px-2 py-1 text-center text-muted overflow-hidden transition-all duration-500"
+      >
+        {{ emojis[index % emojis.length] }} ?
+      </li>
     </ul>
-    <h3>{{ $t('messageDiscovered') }}</h3>
-    <ul>
-      <li v-for="msg in discovered" :key="msg">{{ msg }}</li>
+    <h3 class="text-lg font-semibold mb-2">{{ $t('messageDiscovered') }}</h3>
+    <ul class="space-y-1">
+      <li
+        v-for="msg in discovered"
+        :key="msg"
+        class="bg-surface/50 rounded px-2 py-1 text-center text-text overflow-hidden transition-all duration-500 max-h-10"
+      >
+        {{ msg }}
+      </li>
     </ul>
-  </div>
+  </aside>
 </template>
 
 <script lang="ts" setup>
@@ -18,14 +30,6 @@ interface Props {
 }
 
 defineProps<Props>()
-</script>
 
-<style>
-.left-bar {
-  width: 200px;
-  padding: 10px;
-  border-right: 1px solid #ccc;
-  height: 100vh;
-  overflow-y: auto;
-}
-</style>
+const emojis = ['🐙', '🌵', '🎩', '🐍', '🍕', '🚀', '🌸', '⚡', '🎵', '🦄']
+</script>

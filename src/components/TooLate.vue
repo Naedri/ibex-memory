@@ -1,19 +1,8 @@
 <template>
-  <div class="too-late-container">
-    <h2>{{ $t('tooLateTitle') }}</h2>
+  <div class="text-center p-8 bg-error/20 rounded-xl max-w-[500px] mx-auto">
+    <h2 class="text-2xl font-semibold mb-4">{{ $t('tooLateTitle') }}</h2>
     <p>{{ $t('tooLateDescription') }}</p>
   </div>
 </template>
 
 <script lang="ts" setup></script>
-
-<style scoped>
-.too-late-container {
-  text-align: center;
-  padding: 2rem;
-  background-color: #ffebee;
-  border-radius: 8px;
-  max-width: 500px;
-  margin: 0 auto;
-}
-</style>

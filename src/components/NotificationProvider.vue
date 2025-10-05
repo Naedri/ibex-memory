@@ -1,11 +1,15 @@
 <template>
-  <div class="notif-container">
+  <div class="fixed top-5 right-5 z-[1000] max-w-[350px] w-full">
     <transition-group name="notif-list">
       <div
         v-for="(notification, index) in notifications"
         :key="notification.id"
-        class="notif"
-        :class="notification.type"
+        :class="[
+          'px-5 py-3 mb-2 rounded-lg font-medium cursor-pointer shadow-md text-white',
+          notification.type === 'info' ? 'bg-primary' : '',
+          notification.type === 'warn' ? 'bg-warning' : '',
+          notification.type === 'error' ? 'bg-error' : '',
+        ]"
         @click="removeNotification(index)"
       >
         {{ notification.message }}
@@ -52,49 +56,15 @@ const removeNotification = (index: number) => {
 </script>
 
 <style scoped>
-.notif-container {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
-  max-width: 350px;
-  width: 100%;
-}
-
-.notif {
-  padding: 12px 20px;
-  margin-bottom: 10px;
-  border-radius: 4px;
-  color: white;
-  font-weight: 500;
-  cursor: pointer;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.notif.info {
-  background-color: #2196f3;
-}
-
-.notif.warn {
-  background-color: #ff9800;
-}
-
-.notif.error {
-  background-color: #f44336;
-}
-
-/* Animations */
 .notif-list-enter-from,
 .notif-list-leave-to {
   opacity: 0;
   transform: translateX(100px);
 }
-
 .notif-list-enter-active,
 .notif-list-leave-active {
   transition: all 0.5s ease;
 }
-
 .notif-list-enter-to,
 .notif-list-leave-from {
   opacity: 1;
