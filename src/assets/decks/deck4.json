@@ -1,0 +1,40 @@
+{
+  "author": "Le prix de l'honneur",
+  "cards": [
+    {
+      "imageUrl": "https://cdn-s-www.ledauphine.com/images/8569D454-0F8D-4FE4-9CF6-ED8289FB4CB9/NW_raw/le-patou-permet-aux-eleveurs-de-proteger-leurs-troupeaux-de-moutons-des-attaques-de-loup-archive-le-dl-angelique-surel-1695842605.jpg",
+      "text": "Le patou - Si Mael est sur le champs de bataille, il est instantanément oneshot - 'Wouf wouf'",
+      "cardName": "Le patou"
+    },
+    {
+      "imageUrl": "https://media2.dayoftheshirt.com/gaensrpddnp0hfnw8j5decpanw0z/merica-eagle-bustedtees.jpg",
+      "text": "Adre les deux poings - God bless America. Toutes les créatures ont pacifiste et ne peuvent attaquer à la fin du tour - 'All right guys, calm down'",
+      "cardName": "Adre les deux poings"
+    },
+    {
+      "imageUrl": "https://p1.hiclipart.com/preview/321/929/163/robot-cartoon-wakfu-dofus-krosmaga-game-wakfu-season-3-wakfu-tcg-ankama-png-clipart.jpg",
+      "text": "Gael bot - Si Mael est sur le champs de bataille, il retourne dans la main de son propriétaire - 'Go donjon bouftou?'",
+      "cardName": "Gael bot"
+    },
+    {
+      "imageUrl": "https://s.wsj.net/public/resources/images/B3-DI794_WORDST_M_20190306123237.jpg",
+      "text": "Vincenzo, le consigliere - Toutes les créatures ont 'paranoïa', elles attaquent une cible au hasard - 'Ils sont tous contre moi'",
+      "cardName": "Vincenzo, le consigliere"
+    },
+    {
+      "imageUrl": "https://cf.geekdo-images.com/yecx28GBO6aUkvnuMiwjzA__opengraph/img/yqPLrdOYHi3HSQEpyx9WkcvbWtQ=/fit-in/1200x630/filters:strip_icc()/pic199513.jpg",
+      "text": "Raph duel - La partie s'arrête immédiatement et devient une partie de Raph duel",
+      "cardName": "Raph duel"
+    },
+    {
+      "imageUrl": "https://unijus.org/wp-content/uploads/1b.png",
+      "text": "Matin peps - Toutes les créatures ont +2+2 - 'Tiens, voilà pour toi!'",
+      "cardName": "Matin peps"
+    },
+    {
+      "imageUrl": "https://m.media-amazon.com/images/M/MV5BNDhiM2Q5MWYtY2IyMS00M2RmLTkzZmUtNTMwMDFlMWMwM2U1XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+      "text": "El gato - Toutes les créatures ont euphorie. - 'Ca fait du bien par où ça passe'.",
+      "cardName": "El gato"
+    }
+  ]
+}
