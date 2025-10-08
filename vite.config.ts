@@ -6,7 +6,7 @@ import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 
 export default defineConfig({
-  base: '/ibex-memory/',
+  base: '/',
   plugins: [UnoCSS(), vue(), vueDevTools()],
   resolve: {
     alias: {
